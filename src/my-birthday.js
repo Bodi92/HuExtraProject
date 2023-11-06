@@ -35,7 +35,7 @@ export class BirthdayComponent extends LitElement {
 
   updateBirthdate(event) {
     const birthdate = event.target.value;
-    this.birthdateServer.sendDataToObservable(birthdate);
+    this.birthdateService.sendDataToObservable(birthdate);
   }
 }
 
