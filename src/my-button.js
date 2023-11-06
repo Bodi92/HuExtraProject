@@ -1,5 +1,5 @@
 import { LitElement, css, html } from 'lit'
-
+ 
 class MyButton extends LitElement {
     static get properties () {
         return {
@@ -11,16 +11,16 @@ class MyButton extends LitElement {
       constructor () {
         super()
       }
-
+ 
     render() {
         return html`
         <button class="primary"><slot>Primary Button</slot></button>
         <button class="secondary"><slot>Secondary Button</slot></button>
         `;
       }
-
+ 
     static get styles () {
-     return css` 
+     return css`
      .primary {
         display: inline-block;
         padding: 10px 20px;
@@ -30,7 +30,7 @@ class MyButton extends LitElement {
         border-radius: var(--border-radius);
         cursor: var(--cursor);
       }
-
+ 
       .secondary {
         display: inline-block;
         padding: 10px 20px;
@@ -40,7 +40,7 @@ class MyButton extends LitElement {
         border-radius: var(--border-radius);
         cursor: var(--cursor);
       }
-      ` 
+      `
     }
 }
 window.customElements.define('my-button', MyButton)
