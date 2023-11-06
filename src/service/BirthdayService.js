@@ -1,6 +1,6 @@
 import { Subject } from "rxjs";
 
-export class BirthdateServer {
+export class BirthdayService {
   // Create a Subject to manage the observable
   _birthDateSubject = new Subject();
 

@@ -1,14 +1,14 @@
 import { LitElement, html } from 'lit';
 import { map } from 'rxjs/operators';
-import { BirthdateServer } from './service/BirthdayService';
+import { BirthdayService } from './service/BirthdayService';
 
 export class BirthdayComponent extends LitElement {
   constructor() {
     super();
-    this.birthdateServer = new BirthdateServer();
+    this.birthdateService = new BirthdayService();
     this.daysUntilBirthday = 0;
 
-    this.birthdateServer.getBirthDateObservable()
+    this.birthdateService.getBirthDateObservable()
       .pipe(
         map((days) => `Your birthday is in ${days} day(s).`)
       )
