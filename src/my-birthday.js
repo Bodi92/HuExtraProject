@@ -8,16 +8,24 @@ export class BirthdayComponent extends LitElement {
     this.birthdateService = new BirthdayService();
     this.daysUntilBirthday = 0;
 
+    const observer = {
+      next: (formattedResult) => {
+        this.daysUntilBirthday = formattedResult;
+        this.requestUpdate();
+      },
+      error: (err) => {
+        console.error('Er is een fout opgetreden:', err);
+      },
+      complete: () => {
+        console.log('De observable is voltooid');
+      },
+    };
+
     this.birthdateService.getBirthDateObservable()
       .pipe(
         map((days) => `Your birthday is in ${days} day(s).`)
       )
-      .subscribe({
-        next: (formattedResult) => {
-          this.daysUntilBirthday = formattedResult;
-          this.requestUpdate();
-        },
-      });
+      .subscribe(observer);
   }
 
   render() {
