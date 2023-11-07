@@ -1,26 +1,27 @@
-import { Subject } from "rxjs";
+import { Observable } from 'rxjs';
 
 export class BirthdayService {
-  // Create a Subject to manage the observable
-  _birthDateSubject = new Subject();
-
+  // Create an Observable with an Observer
+  _birthDateObservable = new Observable((observer) => {
+    this._birthDateObserver = observer;
+  });
   // Send data to the observable
   sendDataToObservable(birthdate) {
     // Calculate the days until the next birthday
-    const daysUntilBirthday = this.calculateDaysUntilBirthday(birthdate);
+    const daysUntilBirthday = this._calculateDaysUntilBirthday(birthdate);
    
     // Emit the result to the observable
-    this._birthDateSubject.next(daysUntilBirthday);
+    this._birthDateObserver.next(daysUntilBirthday);
   }
 
   // Get the observable for external subscribers
   getBirthDateObservable() {
     // Return the observable part of the Subject to external subscribers
-    return this._birthDateSubject.asObservable();
+    return this._birthDateObservable ;
   }
 
   // Calculate the days until the next birthday
-  calculateDaysUntilBirthday(birthdate) {
+  _calculateDaysUntilBirthday(birthdate) {
     const currentDate = new Date();
     const birthdayDate = new Date(birthdate);
     
