@@ -21,24 +21,20 @@ class MyButton extends LitElement {
  
     static get styles () {
      return css`
+     button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: var(--border);
+      border-radius: var(--border-radius);
+      cursor: var(--cursor);
+     }
      .primary {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
         background-color: var(--primary-color);
-        border: var(--border);
-        border-radius: var(--border-radius);
-        cursor: var(--cursor);
       }
  
       .secondary {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
         background-color: var(--secondary-color);
-        border: var(--border);
-        border-radius: var(--border-radius);
-        cursor: var(--cursor);
       }
       `
     }
